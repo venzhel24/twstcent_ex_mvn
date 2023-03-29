@@ -1,6 +1,7 @@
 package ru.sfedu.twstcent_ex_mvn.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.sfedu.twstcent_ex_mvn.model.Goods;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class GoodsServiceNew {
     @Autowired
     private GoodsRepository goodsRepository;
@@ -27,6 +29,7 @@ public class GoodsServiceNew {
     }
 
     public Goods updateGoods(Long id, Goods goods) {
+        log.debug("start update goods[1]:");
         Optional<Goods> optionalGoods = goodsRepository.findById(id);
         if (optionalGoods.isPresent()) {
             Goods existingGoods = optionalGoods.get();
